@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XML 文件展示</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ddd;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <h1>XML 文件内容</h1>
+    <pre id="xmlContent"></pre>
+
+    <script>
+        // 使用 JavaScript 动态加载 XML 文件内容
+        async function loadXML() {
+            try {
+                const response = await fetch('sitemap.xml'); // 假设 XML 文件和 HTML 文件在同一目录
+                const text = await response.text();
+                document.getElementById('xmlContent').textContent = text;
+            } catch (error) {
+                document.getElementById('xmlContent').textContent = '加载 XML 文件失败，请检查文件路径。';
+            }
+        }
+
+        // 页面加载完成后调用函数
+        window.onload = loadXML;
+    </script>
+</body>
+</html>
